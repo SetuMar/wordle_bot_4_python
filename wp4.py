@@ -4,7 +4,6 @@ words_to_search = []
 number_of_guesses = 0
 
 start_words = ['salet', 'crony']
-green_count = 0
 
 for word in word_list:
     if len(word) == 6:
@@ -36,12 +35,13 @@ while number_of_guesses != 6:
                         word_score += 0
 
             options_score.update({word: word_score})
-
             for key, value in options_score.items():
                 if value > current_highest:
                     current_option = key
-
         current_guess = current_option
+
+        if current_guess in words_to_search:
+            words_to_search.pop(words_to_search.index(current_guess))
 
     print("Green = g, Yellow = y, grey = r")
     print("Please use the legend above to fill in your results from the wordle")
@@ -50,7 +50,6 @@ while number_of_guesses != 6:
 
     for letter in current_guess:
         if results[current_guess.index(letter)] == "g":
-            green_count += 1
             must_keep_letter_index = current_guess.index(letter)
             for word in words_to_search:
                 if word != "":
@@ -61,7 +60,7 @@ while number_of_guesses != 6:
             must_keep_remove_index = current_guess.index(letter)
             for word in words_to_search:
                 if word != "":
-                    if current_guess[must_keep_remove_index] is word[must_keep_remove_index] or word.count(letter) == 1 and len(words_to_search) > 20:
+                    if current_guess[must_keep_remove_index] is word[must_keep_remove_index]:
                         words_to_search[words_to_search.index(word)] = ""
 
         elif results[current_guess.index(letter)] == "y":
@@ -79,6 +78,6 @@ while number_of_guesses != 6:
             new_words.append(word)
 
     words_to_search = new_words
-    print("GC: " + str(green_count))
+    print(words_to_search)
 
     number_of_guesses += 1
