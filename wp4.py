@@ -4,6 +4,7 @@ words_to_search = []
 number_of_guesses = 0
 
 start_words = ['salet', 'crony']
+green_count = 0
 
 for word in word_list:
     if len(word) == 6:
@@ -49,6 +50,7 @@ while number_of_guesses != 6:
 
     for letter in current_guess:
         if results[current_guess.index(letter)] == "g":
+            green_count += 1
             must_keep_letter_index = current_guess.index(letter)
             for word in words_to_search:
                 if word != "":
@@ -59,7 +61,7 @@ while number_of_guesses != 6:
             must_keep_remove_index = current_guess.index(letter)
             for word in words_to_search:
                 if word != "":
-                    if current_guess[must_keep_remove_index] is word[must_keep_remove_index]:
+                    if current_guess[must_keep_remove_index] is word[must_keep_remove_index] or word.count(letter) == 1 and len(words_to_search) > 20:
                         words_to_search[words_to_search.index(word)] = ""
 
         elif results[current_guess.index(letter)] == "y":
@@ -77,5 +79,6 @@ while number_of_guesses != 6:
             new_words.append(word)
 
     words_to_search = new_words
+    print("GC: " + str(green_count))
 
     number_of_guesses += 1
