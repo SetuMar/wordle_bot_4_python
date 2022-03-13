@@ -12,7 +12,7 @@ for word in word_list:
         words_to_search.append(to_add)
 
 while number_of_guesses != 6:
-    if number_of_guesses < len(start_words):
+    if len(words_to_search) > 100:
         current_guess = start_words[number_of_guesses]
     else:
         print("sorting basics...")
