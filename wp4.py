@@ -3,7 +3,8 @@ word_list = open('wordleanswers.TXT')
 words_to_search = []
 number_of_guesses = 0
 
-start_words = ['salet', 'crony']
+start_words = ['salet', 'crony', 'fight', 'khoum']
+greened_letters = ""
 
 for word in word_list:
     if len(word) == 6:
@@ -53,7 +54,7 @@ while number_of_guesses != 6:
             must_keep_letter_index = current_guess.index(letter)
             for word in words_to_search:
                 if word != "":
-                    if current_guess[must_keep_letter_index] != word[must_keep_letter_index]:
+                    if current_guess[must_keep_letter_index] != word[must_keep_letter_index] or current_guess[must_keep_letter_index] not in word:
                         words_to_search[words_to_search.index(word)] = ""
 
         elif results[current_guess.index(letter)] == "r":
