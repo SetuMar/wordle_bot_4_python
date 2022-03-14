@@ -5,35 +5,6 @@ number_of_guesses = 0
 start_words = ['salet', 'crony', 'fight', 'khoum']
 greened_letters = ""
 
-is_greyed ={
-    "a": False,
-    "b": False,
-    "c": False,
-    "d": False,
-    "e": False,
-    "f": False,
-    "g": False,
-    "h": False,
-    "i": False,
-    "j": False,
-    "k": False,
-    "l": False,
-    "m": False,
-    "n": False,
-    "o": False,
-    "p": False,
-    "q": False,
-    "r": False,
-    "s": False,
-    "t": False,
-    "u": False,
-    "v": False,
-    "w": False,
-    "x": False,
-    "y": False,
-    "z": False
-}
-
 for word in word_list:
     if len(word) == 6:
         to_add = word.strip("\n")
