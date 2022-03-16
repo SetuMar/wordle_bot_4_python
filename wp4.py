@@ -1,4 +1,4 @@
-word_list = open('wordleanswers.TXT')
+word_list = open('wordleanswers')
 
 words_to_search = []
 number_of_guesses = 0
@@ -11,7 +11,7 @@ for word in word_list:
         words_to_search.append(to_add)
 
 while number_of_guesses != 6:
-    if number_of_guesses < 2:
+    if len(words_to_search) > 10:
         current_guess = start_words[number_of_guesses]
     else:
         print("sorting...")
@@ -47,30 +47,23 @@ while number_of_guesses != 6:
     results = input()
 
     for letter in current_guess:
-        if results[current_guess.index(letter)] == "g":
-            must_keep_letter_index = current_guess.index(letter)
-            for word in words_to_search:
-                if word != "":
-                    if current_guess[must_keep_letter_index] != word[must_keep_letter_index] or current_guess[must_keep_letter_index] not in word:
-                        words_to_search[words_to_search.index(word)] = ""
+        current_letter_index = current_guess.index(letter)
+        for word in words_to_search:
+            if word != "":
+                if results[current_guess.index(letter)] == "g" and (current_guess[current_letter_index] != word[current_letter_index] or current_guess[current_letter_index] not in word):
+                    words_to_search[words_to_search.index(word)] = ""
 
-        elif results[current_guess.index(letter)] == "r":
-            must_keep_remove_index = current_guess.index(letter)
-            for word in words_to_search:
-                if word != "":
+                elif results[current_guess.index(letter)] == "r":
                     if current_guess.count(letter) == 1:
-                        if current_guess[must_keep_remove_index] in word:
+                        if current_guess[current_letter_index] in word:
                             words_to_search[words_to_search.index(word)] = ""
                     else:
-                        if current_guess[must_keep_remove_index] is word[must_keep_remove_index]:
+                        if current_guess[current_letter_index] is word[current_letter_index]:
                             words_to_search[words_to_search.index(word)] = ""
 
-        elif results[current_guess.index(letter)] == "y":
-            must_check_to_remove_index = current_guess.index(letter)
-            in_word = letter
-            for word in words_to_search:
-                if word != "":
-                    if letter not in word or word[must_check_to_remove_index] is letter:
+                elif results[current_guess.index(letter)] == "y":
+                    in_word = letter
+                    if letter not in word or word[current_letter_index] is letter:
                         words_to_search[words_to_search.index(word)] = ""
 
     num_of_posses = 0
@@ -83,3 +76,4 @@ while number_of_guesses != 6:
     print(words_to_search)
 
     number_of_guesses += 1
+    
