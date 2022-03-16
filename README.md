@@ -1,3 +1,1 @@
-# wordle_bot_4_python
-# bad bot I made to make wordle. #girlbossing
-# feel free to use it however you please. improvements to be made soon.
+Wordle Bot made by me for a CS project. The bot is ~99% accurate (though that is from limited testing). Bot will continue to be updated irregularly until the project is due.
