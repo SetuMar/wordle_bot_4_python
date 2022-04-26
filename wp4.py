@@ -1,8 +1,8 @@
-word_list = open('wordleanswers')
+word_list = open('wordleanswers.txt')
 
 words_to_search = []
 number_of_guesses = 0
-start_words = ['salet', 'crony', 'fight', 'khoum']
+start_words = ['fjord', 'waltz', 'quick', 'gyres', 'nymph']
 greened_letters = ""
 
 for word in word_list:
@@ -76,4 +76,3 @@ while number_of_guesses != 6:
     print(words_to_search)
 
     number_of_guesses += 1
-    
