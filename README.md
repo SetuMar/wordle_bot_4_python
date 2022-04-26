@@ -1,1 +1,5 @@
-Wordle Bot made by me for a CS project. The bot is ~99% accurate). Bot will continue to be updated irregularly until the project is due.
+Wordle Bot optimally solves Wordle Puzzle.
+
+Strategy:
+Bot removes terms by cycling through words until there is a small enough pool of guesses in which it can work to find best guess.
+Bot finds best guess by finding common letters within possibilites and reccomending most common.
