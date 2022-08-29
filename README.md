@@ -1,4 +1,4 @@
-A bot which optimally solves the Wordle Puzzle.
+# A bot which optimally solves the Wordle Puzzle.
 
 Strategy:
 Bot removes terms by cycling through words until there is a small enough pool of guesses in which it can work to find best guess.
